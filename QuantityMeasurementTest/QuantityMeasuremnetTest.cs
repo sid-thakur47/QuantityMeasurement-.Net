@@ -14,7 +14,6 @@ using NUnit.Framework;
     /// </summary>
     public class QuantityMeasurementTest
     {
-        Length length = new Length();
 
         /// <summary>
         /// Test case 1.1: Given zero feet for comparing should return true 
@@ -22,8 +21,8 @@ using NUnit.Framework;
         [Test]
         public void GivenZeroFeet_When_ZeroFeet_ShouldReturnZero()
         {
-            Length firstFeet = new Length(Length.Unit.FEET, 0.0);
-            Length secondFeet = new Length(Length.Unit.FEET, 0.0);
+            Lenght firstFeet = new Lenght(Lenght.Unit.FEET, 0.0);
+            Lenght secondFeet = new Lenght(Lenght.Unit.FEET, 0.0);
             bool equals = firstFeet.Equals(secondFeet);
             Assert.IsTrue(equals);
         }
@@ -34,7 +33,7 @@ using NUnit.Framework;
         [Test]
         public void GivenFeet_When_Null_ShouldReturnFalse()
         {
-            bool equals = Length.Equals(Length.Unit.FEET, null);
+            bool equals = Lenght.Equals(Lenght.Unit.FEET, null);
             Assert.IsFalse(equals);
         }
 
@@ -44,8 +43,8 @@ using NUnit.Framework;
         [Test]
         public void GivenFeet_When_SameReference_ShouldReturnTrue()
         {
-            Length firstReferanceFeet = new Length();
-            Length secondReferanceFeet = new Length();
+            Lenght firstReferanceFeet = new Lenght();
+            Lenght secondReferanceFeet = new Lenght();
             Assert.AreEqual(firstReferanceFeet, secondReferanceFeet);
         }
 
@@ -55,8 +54,8 @@ using NUnit.Framework;
         [Test]
         public void GivenFeet_When_Type_EqualToReturnTrue()
         {
-            Length firstFeetValue = new Length(Length.Unit.FEET, 0.0);
-            Length secondFeetValue = new Length(Length.Unit.FEET, 0.0);
+            Lenght firstFeetValue = new Lenght(Lenght.Unit.FEET, 0.0);
+            Lenght secondFeetValue = new Lenght(Lenght.Unit.FEET, 0.0);
             Assert.AreEqual(firstFeetValue.GetType(), secondFeetValue.GetType());
         }
 
@@ -66,8 +65,8 @@ using NUnit.Framework;
         [Test]
         public void GivenFeet_When_SameValue_ShouldReturnEqual()
         {
-            Length firstFeetValue = new Length(Length.Unit.FEET, 10.0);
-            Length secondFeetValue = new Length(Length.Unit.FEET, 10.0);
+            Lenght firstFeetValue = new Lenght(Lenght.Unit.FEET, 10.0);
+            Lenght secondFeetValue = new Lenght(Lenght.Unit.FEET, 10.0);
             bool equals = firstFeetValue.Equals(secondFeetValue);
             Assert.True(equals);
         }
@@ -78,8 +77,8 @@ using NUnit.Framework;
         [Test]
         public void GivenInch_When_Zero_ShouldReturnFalse()
         {
-            Length firstInch = new Length(Length.Unit.INCH, 0.0);
-            Length secondInch = new Length(Length.Unit.INCH, 0.0);
+            Lenght firstInch = new Lenght(Lenght.Unit.INCH, 0.0);
+            Lenght secondInch = new Lenght(Lenght.Unit.INCH, 0.0);
             bool equals = firstInch.Equals(secondInch);
             Assert.IsTrue(equals);
         }
@@ -90,7 +89,7 @@ using NUnit.Framework;
         [Test]
         public void GivenInch_When_Null_ShouldReturnFalse()
         {
-            bool equals = Length.Equals(Length.Unit.INCH, null);
+            bool equals = Lenght.Equals(Lenght.Unit.INCH, null);
             Assert.IsFalse(equals);
         }
 
@@ -101,8 +100,8 @@ using NUnit.Framework;
         public void GivenInch_When_SameReference_ShouldReturnTrue()
         {
             //Instance of Conversion
-            Length firstReferanceInch = new Length();
-            Length secondReferanceInch = firstReferanceInch;
+            Lenght firstReferanceInch = new Lenght();
+            Lenght secondReferanceInch = firstReferanceInch;
             Assert.AreEqual(firstReferanceInch, secondReferanceInch);
         }
 
@@ -112,8 +111,8 @@ using NUnit.Framework;
         [Test]
         public void GivenInch_When_SameType_ShouldReturnTrue()
         {
-            Length firstInchValue = new Length(Length.Unit.INCH, 0.0);
-            Length secondInchValue = new Length(Length.Unit.INCH, 0.0);
+            Lenght firstInchValue = new Lenght(Lenght.Unit.INCH, 0.0);
+            Lenght secondInchValue = new Lenght(Lenght.Unit.INCH, 0.0);
             Assert.AreEqual(firstInchValue.GetType(), secondInchValue.GetType());
         }
 
@@ -123,9 +122,65 @@ using NUnit.Framework;
         [Test]
         public void GivenInch_When_SameValue_ShouldReturnTrue()
         {
-            Length firstInchValue = new Length(Length.Unit.INCH, 10.0);
-            Length secondInchValue = new Length(Length.Unit.INCH, 10.0);
+            Lenght firstInchValue = new Lenght(Lenght.Unit.INCH, 10.0);
+            Lenght secondInchValue = new Lenght(Lenght.Unit.INCH, 10.0);
             Assert.AreEqual(firstInchValue.GetType(), secondInchValue.GetType());
+        }
+
+        /// <summary>
+        /// Test case 1.11: Given 0 inch and 0 feet should return zero
+        /// </summary>
+        [Test]
+        public void Given_When_ZeroFeetAndZeroInch_ShouldReturnEqual()
+        {
+            Lenght firstFeet = new Lenght(Lenght.Unit.FEET, 0.0);
+            Lenght secondFeet = new Lenght(Lenght.Unit.INCH, 0.0);
+            Assert.IsTrue(firstFeet.Compare(secondFeet));
+        }
+
+        /// <summary>
+        /// Test case 1.12: Given 1 feet and 1 inch should not be equal
+        /// </summary>
+        [Test]
+        public void Given_When_1FeetAnd1Inch_Compared_ShouldReturnFalse()
+        {
+            Lenght feet1 = new Lenght(Lenght.Unit.FEET, 1.0);
+            Lenght inch1 = new Lenght(Lenght.Unit.INCH, 1.0);
+            Assert.AreNotEqual(feet1, inch1);
+        }
+
+        //// <summary>
+        //// Test case 1.13 Given 1 inch and 2 inch  should return false
+        //// </summary>
+        [Test]
+        public void Given_When_1InchAnd2Inch_WhenCompared_ShouldReturnFalse()
+        {
+            Lenght inch1 = new Lenght(Lenght.Unit.INCH, 1.0);
+            Lenght inch2 = new Lenght(Lenght.Unit.INCH, 2.0);
+            bool CompareCheck = inch1.Compare(inch2);
+            Assert.IsFalse(CompareCheck);
+        }
+        //// <summary>
+        //// Test case = 1.14 Given 1 feet and 12 inch when converted should return true
+        //// </summary
+        [Test]
+        public void Given_When_1FeetAnd12Inch_WhenCompared_ShouldReturnTrue()
+        {
+            Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
+            Lenght inch = new Lenght(Lenght.Unit.INCH, 12.0);
+            bool CompareCheck = feet.Compare(inch);
+            Assert.IsTrue(CompareCheck);
+        }
+        //// <summary>
+        //// Test case = 1.15 Given 12 inch and 1Feet when Compared should return treu
+        //// </summary
+        [Test]
+        public void Given_12InchAnd1Feet_WhenCompared_ShouldReturnTrue()
+        {
+            Lenght inch = new Lenght(Lenght.Unit.INCH, 12.0);
+            Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
+            bool CompareCheck = inch.Compare(feet);
+            Assert.IsTrue(CompareCheck);
         }
     }
 }

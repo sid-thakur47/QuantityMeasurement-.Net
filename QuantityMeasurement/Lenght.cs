@@ -14,15 +14,6 @@ namespace QuantityMeasurement.BridgeLabz
     public class Lenght
 #pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
-        //// <summary>
-        //// Constant for feet and inch conversion
-        //// </summary>
-        public const double FEET_TO_INCH = 12.0;
-
-        /// <summary>
-        /// Constant for yard and inch
-        /// </summary>
-        public const double YARD_TO_INCH = 36.0;
 
         //// <summary>
         //// va;ue of unit

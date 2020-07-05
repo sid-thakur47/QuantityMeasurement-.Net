@@ -285,5 +285,30 @@ namespace QuantityMeasurement.BridgeLabz
             double addition = lenght.Addition(inch1, inch2);
             Assert.AreEqual(4, addition);
         }
+
+
+        /// <summary>
+        /// Test case 4.2: Addition of 1 feet and 2 inches which should return 14 inch
+        /// </summary>
+        [Test]
+        public void Given_1FeetAnd2Inches_WhenAdded_ShouldReturn14Inch()
+        {
+            Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
+            Lenght inch = new Lenght(Lenght.Unit.INCH, 2.0);
+            double addition = lenght.Addition(feet, inch);
+            Assert.AreEqual(14, addition);
+        }
+
+        /// <summary>
+        /// Test case 4.2: Addition of 1 feet and 1 feet which should return 24 inch
+        /// </summary>
+        [Test]
+        public void Given1FeetAnd1Feet_WhenAdded_ShouldReturn24Inch()
+        {
+            Lenght feet1 = new Lenght(Lenght.Unit.FEET, 1.0);
+            Lenght feet2 = new Lenght(Lenght.Unit.FEET, 1.0);
+            double additionCheck = lenght.Addition(feet1, feet2);
+            Assert.AreEqual(24, additionCheck);
+        }
     }
 }

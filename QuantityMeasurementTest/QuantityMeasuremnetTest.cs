@@ -326,5 +326,17 @@ namespace QuantityMeasurement.BridgeLabz
             double addition = lenght.Addition(inch1, cms2);
             Assert.AreEqual(3, addition);
         }
+
+        /// <summary>
+        /// Test case 5.1: Given gallon 1 and 3.78 litres when compared should return true
+        /// </summary>
+        [Test]
+        public void Given1GallonAnd3point78Litres_WhenCompared_ShouldReturnTrue()
+        {
+            Lenght gallon = new Lenght(Lenght.Unit.GALLON, 1.0);
+            Lenght litre = new Lenght(Lenght.Unit.LITRE, 3.78);
+            bool compare = lenght.UnitConversion(gallon, litre);
+            Assert.IsTrue(compare);
+        }
     }
 }

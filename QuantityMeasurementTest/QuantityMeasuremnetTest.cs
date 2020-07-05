@@ -142,7 +142,7 @@ using NUnit.Framework;
         /// Test case 1.12: Given 1 feet and 1 inch should not be equal
         /// </summary>
         [Test]
-        public void Given_When_1FeetAnd1Inch_Compared_ShouldReturnFalse()
+        public void Given_When_OneFeetAndOneInch_Compared_ShouldReturnFalse()
         {
             Lenght feet1 = new Lenght(Lenght.Unit.FEET, 1.0);
             Lenght inch1 = new Lenght(Lenght.Unit.INCH, 1.0);
@@ -153,7 +153,7 @@ using NUnit.Framework;
         //// Test case 1.13: Given 1 inch and 2 inch  should return false
         //// </summary>
         [Test]
-        public void Given_When_1InchAnd2Inch_WhenCompared_ShouldReturnFalse()
+        public void Given_When_OneInchAndOneInch_WhenCompared_ShouldReturnFalse()
         {
             Lenght inch1 = new Lenght(Lenght.Unit.INCH, 1.0);
             Lenght inch2 = new Lenght(Lenght.Unit.INCH, 2.0);
@@ -164,7 +164,7 @@ using NUnit.Framework;
         //// Test case 1.14: Given 1 feet and 12 inch when converted should return true
         //// </summary
         [Test]
-        public void Given_When_1FeetAnd12Inch_WhenCompared_ShouldReturnTrue()
+        public void Given_When_FeetAndInch_WhenCompared_ShouldReturnTrue()
         {
             Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
             Lenght inch = new Lenght(Lenght.Unit.INCH, 12.0);
@@ -180,6 +180,18 @@ using NUnit.Framework;
             Lenght inch = new Lenght(Lenght.Unit.INCH, 12.0);
             Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
             bool compare = inch.Compare(feet);
+            Assert.IsTrue(compare);
+        }
+
+        //// <summary>
+        //// Test case  2.1:Given yard and feet when converted and compared should return true
+        //// </summary
+        [Test]
+        public void Given_OneYardAndThreeFeet_WhenCompared_ShouldReturnTrue()
+        {
+            Lenght yard = new Lenght(Lenght.Unit.YARD, 1.0);
+            Lenght feet = new Lenght(Lenght.Unit.FEET, 3.0);
+            bool compare = yard.Compare(feet);
             Assert.IsTrue(compare);
         }
     }

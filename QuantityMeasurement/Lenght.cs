@@ -91,25 +91,20 @@ namespace QuantityMeasurement.BridgeLabz
         }
 
         /// <summary>
-        /// To get the baseunits of units
+        /// To get the baseunits
         /// </summary>
         /// <param name="unit"></param>
         /// <returns> Unit values</returns>
         private double GetUnits(Unit unit)
         {
-            switch (unit)
+            return unit switch
             {
-                case Unit.INCH:
-                    return 1;
-                case Unit.FEET:
-                    return 12;
-                case Unit.YARD:
-                    return 36;
-                case Unit.CMS:
-                    return 0.4;
-                default:
-                    return 0;
-            }
+                Unit.INCH => 1,
+                Unit.FEET => 12,
+                Unit.YARD => 36,
+                Unit.CMS => 0.4,
+                _ => 0,
+            };
         }
 
         /// <summary>

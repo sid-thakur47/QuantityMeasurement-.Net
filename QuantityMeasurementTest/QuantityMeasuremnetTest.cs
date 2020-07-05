@@ -230,5 +230,17 @@ using NUnit.Framework;
             bool compareCheck = inch.Compare(yard);
             Assert.IsTrue(compareCheck);
         }
+
+        //// <summary>
+        //// Test case 2.5: Given 3 feet and 1 yard when compared should return true
+        //// </summary
+        [Test]
+        public void Given_3FeetAnd1Yard_WhenCompared_ShouldReturnTrue()
+        {
+            Lenght yard = new Lenght(Lenght.Unit.YARD, 1.0);
+            Lenght feet = new Lenght(Lenght.Unit.FEET, 3.0);
+            bool compareCheck = yard.Compare(feet);
+            Assert.IsTrue(compareCheck);
+        }
     }
 }

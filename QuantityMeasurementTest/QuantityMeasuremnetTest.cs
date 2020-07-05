@@ -248,30 +248,5 @@ namespace QuantityMeasurement.BridgeLabz
             bool compareCheck = lenght.UnitConversion(yard,feet);
             Assert.IsTrue(compareCheck);
         }
-
-        /// <summary>
-        /// Test case 3 : Given 2 inch and 5 cm when compared should return true
-        /// </summary>
-        [Test]
-        public void Given2InchAnd5Cms_WhenCompared_ShouldReturnTrue()
-        {
-            Lenght inch1 = new Lenght(Lenght.Unit.INCH, 2.0);
-            Lenght cms1 = new Lenght(Lenght.Unit.CMS, 5.0);
-            bool compareCheck = lenght.UnitConversion(inch1, cms1);
-            Assert.IsTrue(compareCheck);
-        }
-
-        /// <summary>
-        /// Compared 5 inch and 5 Cms which should return False
-        /// </summary>
-        [Test]
-        public void Given1InchAnd1Cms_WhenCompared_ShouldReturnFalse()
-        {
-            Lenght inch1 = new Lenght(Lenght.Unit.INCH, 5.0);
-            Lenght cms1 = new Lenght(Lenght.Unit.CMS, 5.0);
-            bool compareCheck = lenght.UnitConversion(inch1, cms1);
-            Assert.IsFalse(compareCheck);
-        }
     }
-}
 }

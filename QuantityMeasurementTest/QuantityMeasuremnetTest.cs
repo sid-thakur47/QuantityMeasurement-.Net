@@ -251,27 +251,39 @@ namespace QuantityMeasurement.BridgeLabz
 
 
         /// <summary>
-        /// Test case 3 : Given 2 inch and 5 cm when compared should return true
+        /// Test case 3: Given 2 inch and 5 cm when compared should return true
         /// </summary>
         [Test]
-        public void Given2InchAnd5Cms_WhenCompared_ShouldReturnTrue()
+        public void Given_2InchAnd5Cms_WhenCompared_ShouldReturnTrue()
         {
-            Lenght inch1 = new Lenght(Lenght.Unit.INCH, 2.0);
-            Lenght cms1 = new Lenght(Lenght.Unit.CMS, 5.0);
-            bool compareCheck = lenght.UnitConversion(inch1, cms1);
+            Lenght inch = new Lenght(Lenght.Unit.INCH, 2.0);
+            Lenght cm = new Lenght(Lenght.Unit.CMS, 5.0);
+            bool compareCheck = lenght.UnitConversion(inch, cm);
             Assert.IsTrue(compareCheck);
         }
 
         /// <summary>
-        /// Compared 5 inch and 5 Cms which should return False
+        /// Test case 3.1: 5 inch and 5 Cms which should return False
         /// </summary>
         [Test]
-        public void Given1InchAnd1Cms_WhenCompared_ShouldReturnFalse()
+        public void Given_1InchAnd1Cms_WhenCompared_ShouldReturnFalse()
         {
-            Lenght inch1 = new Lenght(Lenght.Unit.INCH, 5.0);
-            Lenght cms1 = new Lenght(Lenght.Unit.CMS, 5.0);
-            bool compareCheck = lenght.UnitConversion(inch1, cms1);
+            Lenght inch = new Lenght(Lenght.Unit.INCH, 5.0);
+            Lenght cm = new Lenght(Lenght.Unit.CMS, 5.0);
+            bool compareCheck = lenght.UnitConversion(inch, cm);
             Assert.IsFalse(compareCheck);
+        }
+
+        /// <summary>
+        /// Test case 4.1: Addition of 2 inch and 2 inch should return 4 inch
+        /// </summary>
+        [Test]
+        public void Given2InchAnd2Inch_WhenAdded_ShouldReturn4Inch()
+        {
+            Lenght inch1 = new Lenght(Lenght.Unit.INCH, 2.0);
+            Lenght inch2 = new Lenght(Lenght.Unit.INCH, 2.0);
+            double addition = lenght.Addition(inch1, inch2);
+            Assert.AreEqual(4, addition);
         }
     }
 }

@@ -120,10 +120,30 @@ namespace QuantityMeasurement.BridgeLabz
             return CompareUnits(firstUnit, secondUnit, baseUnit1, baseUnit2);
         }
 
-
-        private bool CompareUnits(Lenght unit1, Lenght unit2, double baseUnit1, double baseUnit2)
+        /// <summary>
+        /// To compare the values of the units
+        /// </summary>
+        /// <param name="firstUnit">First unit for comparision</param>
+        /// <param name="secountUnit">Second unit for comparision</param>
+        /// <param name="firstBaseUnit">First base unit</param>
+        /// <param name="secondBaseUnit">Second base unit</param>
+        /// <returns>Boolean condtion according to comparsion</returns>
+        private bool CompareUnits(Lenght firstUnit, Lenght secountUnit, double firstBaseUnit, double secondBaseUnit)
         {
-            return Math.Round(unit1.Value * baseUnit1).CompareTo(Math.Round(unit2.Value * baseUnit2)) == 0;
+            return Math.Round(firstUnit.Value * firstBaseUnit).CompareTo(Math.Round(secountUnit.Value * secondBaseUnit)) == 0;
+        }
+        
+        /// <summary>
+        /// Addition of two units
+        /// </summary>
+        /// <param name="firstUnit"></param>
+        /// <param name="secondUnit"></param>
+        /// <returns>Addition of two units</returns>
+        public double Addition(Lenght firstUnit, Lenght secondUnit)
+        {
+            double baseUnit1 = GetUnits(firstUnit.UnitType);
+            double baseUnit2 = GetUnits(secondUnit.UnitType);
+            return Math.Round(firstUnit.Value * baseUnit1) + Math.Round(secondUnit.Value * baseUnit2);
         }
     }
 }

@@ -64,7 +64,22 @@ namespace QuantityMeasurement.BridgeLabz
             /// <summary>
             /// comparing centimeter
             /// </summary>
-            CMS
+            CMS,
+
+            /// <summary>
+            /// comparing gallon
+            /// </summary>
+            GALLON,
+
+            /// <summary>
+            /// comparing milliliter
+            /// </summary>
+            MiLLILITERS,
+                    
+            /// <summary>
+            /// comapring litres
+            /// </summary>
+             LITRE
         };
 
         /// <summary>
@@ -88,14 +103,25 @@ namespace QuantityMeasurement.BridgeLabz
         /// <returns> Unit values</returns>
         private double GetUnits(Unit unit)
         {
-            return unit switch
+            switch (unit)
             {
-                Unit.INCH => 1,
-                Unit.FEET => 12,
-                Unit.YARD => 36,
-                Unit.CMS => 0.4,
-                _ => 0,
-            };
+                case Unit.INCH:
+                    return 1;
+                case Unit.FEET:
+                    return 12;
+                case Unit.YARD:
+                    return 36;
+                case Unit.CMS:
+                    return 0.4;
+                case Unit.GALLON:
+                    return 3.78;
+                case Unit.LITRE:
+                    return 1;
+                case Unit.MiLLILITERS:
+                    return 0.001;
+                default:
+                    return 0;
+            }
         }
 
         /// <summary>

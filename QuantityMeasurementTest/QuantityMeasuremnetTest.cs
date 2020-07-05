@@ -194,5 +194,17 @@ using NUnit.Framework;
             bool compare = yard.Compare(feet);
             Assert.IsTrue(compare);
         }
+
+        //// <summary>
+        //// Test case 2.2: Given 1 yard and 1 feet when compared returns false
+        //// </summary
+        [Test]
+        public void Given1FeetAnd1Yard_WhenCompared_ShouldReturnNotEqualLength()
+        {
+            Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
+            Lenght yard = new Lenght(Lenght.Unit.YARD, 1.0);
+            bool compareCheck = feet.Compare(yard);
+            Assert.IsFalse(compareCheck);
+        }
     }
 }

@@ -131,7 +131,7 @@ using NUnit.Framework;
         /// Test case 1.11: Given 0 inch and 0 feet should return zero
         /// </summary>
         [Test]
-        public void Given_When_ZeroFeetAndZeroInch_ShouldReturnEqual()
+        public void Given_ZeroFeetAndZeroInch_When_ShouldReturnEqual()
         {
             Lenght firstFeet = new Lenght(Lenght.Unit.FEET, 0.0);
             Lenght secondFeet = new Lenght(Lenght.Unit.INCH, 0.0);
@@ -142,7 +142,7 @@ using NUnit.Framework;
         /// Test case 1.12: Given 1 feet and 1 inch should not be equal
         /// </summary>
         [Test]
-        public void Given_When_OneFeetAndOneInch_Compared_ShouldReturnFalse()
+        public void Given_OneFeetAndOneInch_When_Compared_ShouldReturnFalse()
         {
             Lenght feet1 = new Lenght(Lenght.Unit.FEET, 1.0);
             Lenght inch1 = new Lenght(Lenght.Unit.INCH, 1.0);
@@ -153,7 +153,7 @@ using NUnit.Framework;
         //// Test case 1.13: Given 1 inch and 2 inch  should return false
         //// </summary>
         [Test]
-        public void Given_When_OneInchAndOneInch_WhenCompared_ShouldReturnFalse()
+        public void Given_OneInchAndOneInch_When_Compared_ShouldReturnFalse()
         {
             Lenght inch1 = new Lenght(Lenght.Unit.INCH, 1.0);
             Lenght inch2 = new Lenght(Lenght.Unit.INCH, 2.0);
@@ -164,7 +164,7 @@ using NUnit.Framework;
         //// Test case 1.14: Given 1 feet and 12 inch when converted should return true
         //// </summary
         [Test]
-        public void Given_When_FeetAndInch_WhenCompared_ShouldReturnTrue()
+        public void Given_FeetAndInch_When_Compared_ShouldReturnTrue()
         {
             Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
             Lenght inch = new Lenght(Lenght.Unit.INCH, 12.0);
@@ -175,7 +175,7 @@ using NUnit.Framework;
         //// Test case 1.15 Given 12 inch and 1Feet when Compared should return treu
         //// </summary
         [Test]
-        public void Given_When_12InchAnd1Feet_WhenCompared_ShouldReturnTrue()
+        public void Given_12InchAnd1Feet_When_Compared_ShouldReturnTrue()
         {
             Lenght inch = new Lenght(Lenght.Unit.INCH, 12.0);
             Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
@@ -187,7 +187,7 @@ using NUnit.Framework;
         //// Test case  2.1:Given yard and feet when converted and compared should return true
         //// </summary
         [Test]
-        public void Given_When_OneYardAndThreeFeet_WhenCompared_ShouldReturnTrue()
+        public void Given_OneYardAndThreeFeet_When_Compared_ShouldReturnTrue()
         {
             Lenght yard = new Lenght(Lenght.Unit.YARD, 1.0);
             Lenght feet = new Lenght(Lenght.Unit.FEET, 3.0);
@@ -199,7 +199,7 @@ using NUnit.Framework;
         //// Test case 2.2: Given 1 yard and 1 feet when compared returns false
         //// </summary
         [Test]
-        public void Given_When_OneFeetAndOneYard_WhenCompared_ShouldReturnFalse()
+        public void Given_OneFeetAndOneYard_When_Compared_ShouldReturnFalse()
         {
             Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
             Lenght yard = new Lenght(Lenght.Unit.YARD, 1.0);
@@ -211,11 +211,23 @@ using NUnit.Framework;
         //// <summary>
         //// Test case 2.3: Given 1 yard and 36 inch when compared returns true
         //// </summary
-        public void Given_When_OneYardAnd36Inch_WhenCompared_ShouldReturnEqualLength()
+        public void Given_OneYardAnd36Inch_When_Compared_ShouldReturnEqualLength()
         {
             Lenght yard = new Lenght(Lenght.Unit.YARD, 1.0);
             Lenght inch = new Lenght(Lenght.Unit.INCH, 36.0);
             bool compareCheck = yard.Compare(inch);
+            Assert.IsTrue(compareCheck);
+        }
+
+        //// <summary>
+        //// Test case 2.4: Given 36 inch and 1 yard when compared returns true
+        //// </summary
+        [Test]
+        public void Given_36InchAnd1yard_When_Compared_ShouldReturnEqualLength()
+        {
+            Lenght inch = new Lenght(Lenght.Unit.INCH, 36.0);
+            Lenght yard = new Lenght(Lenght.Unit.YARD, 1.0);
+            bool compareCheck = inch.Compare(yard);
             Assert.IsTrue(compareCheck);
         }
     }

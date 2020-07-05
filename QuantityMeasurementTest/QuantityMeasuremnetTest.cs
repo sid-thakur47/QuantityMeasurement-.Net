@@ -251,7 +251,7 @@ namespace QuantityMeasurement.BridgeLabz
             Lenght yard = new Lenght(Lenght.Unit.YARD, 1.0);
             Lenght feet = new Lenght(Lenght.Unit.FEET, 3.0);
             bool compare = lenght.UnitConversion(yard, feet);
-            Assert.IsTrue(compareh);
+            Assert.IsTrue(compare);
         }
 
 
@@ -331,11 +331,23 @@ namespace QuantityMeasurement.BridgeLabz
         /// Test case 5.1: Given gallon 1 and 3.78 litres when compared should return true
         /// </summary>
         [Test]
-        public void Given1GallonAnd3point78Litres_WhenCompared_ShouldReturnTrue()
+        public void Given_1GallonAnd3Point78Litres_WhenCompared_ShouldReturnTrue()
         {
             Lenght gallon = new Lenght(Lenght.Unit.GALLON, 1.0);
             Lenght litre = new Lenght(Lenght.Unit.LITRE, 3.78);
             bool compare = lenght.UnitConversion(gallon, litre);
+            Assert.IsTrue(compare);
+        }
+
+        /// <summary>
+        /// Test case 5.2: Given 1 litre and 1000ml when compared should return true
+        /// </summary>
+        [Test]
+        public void Given_1LitreAnd1000Ml_WhenCompared_ShouldReturnTrue()
+        {
+            Lenght litre = new Lenght(Lenght.Unit.LITRE, 1.0);
+            Lenght milliliter = new Lenght(Lenght.Unit.MiLLILITERS, 1000.0);
+            bool compare = lenght.UnitConversion(litre, milliliter);
             Assert.IsTrue(compare);
         }
     }

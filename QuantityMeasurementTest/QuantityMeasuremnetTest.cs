@@ -350,5 +350,18 @@ namespace QuantityMeasurement.BridgeLabz
             bool compare = lenght.UnitConversion(litre, milliliter);
             Assert.IsTrue(compare);
         }
+
+
+        /// <summary>
+        /// Test case 5.3: Given 1 litre and 1 ml when compared should return false
+        /// </summary>
+        [Test]
+        public void Given_1LitreAnd1Milliliter_WhenCompared_ShouldReturnFalse()
+        {
+            Lenght litre = new Lenght(Lenght.Unit.LITRE, 1);
+            Lenght milliLiter = new Lenght(Lenght.Unit.MiLLILITERS, 1);
+            bool compare = lenght.UnitConversion(litre, milliLiter);
+            Assert.IsFalse(compare);
+        }
     }
 }

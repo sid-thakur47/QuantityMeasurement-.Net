@@ -150,37 +150,37 @@ using NUnit.Framework;
         }
 
         //// <summary>
-        //// Test case 1.13 Given 1 inch and 2 inch  should return false
+        //// Test case 1.13: Given 1 inch and 2 inch  should return false
         //// </summary>
         [Test]
         public void Given_When_1InchAnd2Inch_WhenCompared_ShouldReturnFalse()
         {
             Lenght inch1 = new Lenght(Lenght.Unit.INCH, 1.0);
             Lenght inch2 = new Lenght(Lenght.Unit.INCH, 2.0);
-            bool CompareCheck = inch1.Compare(inch2);
-            Assert.IsFalse(CompareCheck);
+            bool compare = inch1.Compare(inch2);
+            Assert.IsFalse(compare);
         }
         //// <summary>
-        //// Test case = 1.14 Given 1 feet and 12 inch when converted should return true
+        //// Test case 1.14: Given 1 feet and 12 inch when converted should return true
         //// </summary
         [Test]
         public void Given_When_1FeetAnd12Inch_WhenCompared_ShouldReturnTrue()
         {
             Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
             Lenght inch = new Lenght(Lenght.Unit.INCH, 12.0);
-            bool CompareCheck = feet.Compare(inch);
-            Assert.IsTrue(CompareCheck);
+            bool compare = feet.Compare(inch);
+            Assert.IsTrue(compare);
         }
         //// <summary>
-        //// Test case = 1.15 Given 12 inch and 1Feet when Compared should return treu
+        //// Test case 1.15 Given 12 inch and 1Feet when Compared should return treu
         //// </summary
         [Test]
         public void Given_12InchAnd1Feet_WhenCompared_ShouldReturnTrue()
         {
             Lenght inch = new Lenght(Lenght.Unit.INCH, 12.0);
             Lenght feet = new Lenght(Lenght.Unit.FEET, 1.0);
-            bool CompareCheck = inch.Compare(feet);
-            Assert.IsTrue(CompareCheck);
+            bool compare = inch.Compare(feet);
+            Assert.IsTrue(compare);
         }
     }
 }

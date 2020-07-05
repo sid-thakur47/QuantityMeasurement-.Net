@@ -3,6 +3,8 @@
 // Copyright (c) 2020 All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
+using System;
+
 namespace QuantityMeasurement.BridgeLabz
 {
 #pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
@@ -66,7 +68,12 @@ namespace QuantityMeasurement.BridgeLabz
             /// <summary>
             /// comparing yard
             /// </summary>
-            YARD
+            YARD,
+
+            /// <summary>
+            /// comparing centimeter
+            /// </summary>
+            CMS
         };
 
         /// <summary>
@@ -83,38 +90,45 @@ namespace QuantityMeasurement.BridgeLabz
             return that.Value == Value && that.UnitType == UnitType;
         }
 
-        public bool Compare(Lenght that)
+        /// <summary>
+        /// To get the baseunits of units
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <returns> Unit values</returns>
+        private double GetUnits(Unit unit)
         {
+            switch (unit)
+            {
+                case Unit.INCH:
+                    return 1;
+                case Unit.FEET:
+                    return 12;
+                case Unit.YARD:
+                    return 36;
+                case Unit.CMS:
+                    return 0.4;
+                default:
+                    return 0;
+            }
+        }
 
-            if (this.UnitType.Equals(Unit.FEET) && that.UnitType.Equals(Unit.FEET) || this.UnitType.Equals(Unit.INCH) && that.UnitType.Equals(Unit.INCH))
-            {
-                return this.Value.CompareTo(that.Value) == 0;
-            }
-            if (this.UnitType.Equals(Unit.FEET) && that.UnitType.Equals(Unit.INCH))
-            {
-                return this.Value * FEET_TO_INCH.CompareTo(that.Value) == 0;
-            }
-            if (this.UnitType.Equals(Unit.INCH) && that.UnitType.Equals(Unit.FEET))
-            {
-                return (this.Value / FEET_TO_INCH).CompareTo(that.Value) == 0;
-            }
-            if (this.UnitType.Equals(Unit.YARD) && that.UnitType.Equals(Unit.FEET))
-            {
-                return (this.Value * YARD_TO_INCH).CompareTo(that.Value * FEET_TO_INCH) == 0;
-            }
-            if (this.UnitType.Equals(Unit.YARD) && that.UnitType.Equals(Unit.INCH))
-            {
-                return (this.Value * YARD_TO_INCH).CompareTo(that.Value) == 0;
-            }
-            if (this.UnitType.Equals(Unit.INCH) && that.UnitType.Equals(Unit.YARD))
-            {
-                return (this.Value).CompareTo(that.Value * YARD_TO_INCH) == 0;
-            }
-            if (this.UnitType.Equals(Unit.FEET) && that.UnitType.Equals(Unit.YARD))
-            {
-                return (this.Value * FEET_TO_INCH).CompareTo(that.Value * YARD_TO_INCH) == 0;
-            }
-            return false;
+        /// <summary>
+        /// To convert the values of the units
+        /// </summary>
+        /// <param name="firstUnit"></param>
+        /// <param name="secondUnit"></param>
+        /// <returns>Condtion according to comparision</returns>
+        public bool UnitConversion(Lenght firstUnit, Lenght secondUnit)
+        {
+            double baseUnit1 = GetUnits(firstUnit.UnitType);
+            double baseUnit2 = GetUnits(secondUnit.UnitType);
+            return CompareUnits(firstUnit, secondUnit, baseUnit1, baseUnit2);
+        }
+
+
+        private bool CompareUnits(Lenght unit1, Lenght unit2, double baseUnit1, double baseUnit2)
+        {
+            return Math.Round(unit1.Value * baseUnit1).CompareTo(Math.Round(unit2.Value * baseUnit2)) == 0;
         }
     }
 }

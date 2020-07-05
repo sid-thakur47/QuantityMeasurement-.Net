@@ -363,5 +363,17 @@ namespace QuantityMeasurement.BridgeLabz
             bool compare = lenght.UnitConversion(litre, milliLiter);
             Assert.IsFalse(compare);
         }
+
+        /// <summary>
+        /// Test case 5.4: Given 1 gallon and 1 litre when compared should return false
+        /// </summary>
+        [Test]
+        public void Given_1GallonAnd1Litre_WhenCompared_ShouldReturnFalse()
+        {
+            Lenght gallon = new Lenght(Lenght.Unit.GALLON, 1);
+            Lenght litre = new Lenght(Lenght.Unit.LITRE, 1);
+            bool compare = lenght.UnitConversion(gallon, litre);
+            Assert.IsFalse(compare);
+        }
     }
 }

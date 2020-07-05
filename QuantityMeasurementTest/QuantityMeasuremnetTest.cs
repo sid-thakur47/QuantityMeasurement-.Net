@@ -300,7 +300,7 @@ namespace QuantityMeasurement.BridgeLabz
         }
 
         /// <summary>
-        /// Test case 4.2: Addition of 1 feet and 1 feet which should return 24 inch
+        /// Test case 4.3: Addition of 1 feet and 1 feet which should return 24 inch
         /// </summary>
         [Test]
         public void Given1FeetAnd1Feet_WhenAdded_ShouldReturn24Inch()
@@ -309,6 +309,20 @@ namespace QuantityMeasurement.BridgeLabz
             Lenght feet2 = new Lenght(Lenght.Unit.FEET, 1.0);
             double additionCheck = lenght.Addition(feet1, feet2);
             Assert.AreEqual(24, additionCheck);
+        }
+
+
+
+        /// <summary>
+        /// Test case 4.4: Addition of 2 inches and 2.5 cms which should return 3 inch
+        /// </summary>
+        [Test]
+        public void Given_1InchAnd2AndHalfCMS_WhenAdded_ShouldReturn3Inch()
+        {
+            Lenght inch1 = new Lenght(Lenght.Unit.INCH, 2.0);
+            Lenght cms2 = new Lenght(Lenght.Unit.CMS, 2.5);
+            double addition = lenght.Addition(inch1, cms2);
+            Assert.AreEqual(3, addition);
         }
     }
 }

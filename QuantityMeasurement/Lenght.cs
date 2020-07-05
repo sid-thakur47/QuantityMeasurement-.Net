@@ -17,6 +17,11 @@ namespace QuantityMeasurement.BridgeLabz
         //// </summary>
         public const double FEET_TO_INCH = 12.0;
 
+        /// <summary>
+        /// Constant for yard and inch
+        /// </summary>
+        public const double YARD_TO_INCH = 36.0;
+
         //// <summary>
         //// va;ue of unit
         //// </summary>
@@ -56,7 +61,12 @@ namespace QuantityMeasurement.BridgeLabz
             /// <summary>
             /// comparing inch
             /// </summary>
-            INCH
+            INCH,
+
+            /// <summary>
+            /// comparing yard
+            /// </summary>
+            YARD
         };
 
         /// <summary>
@@ -70,7 +80,7 @@ namespace QuantityMeasurement.BridgeLabz
             if (this == o) return true;
             if (o == null) return false;
             Lenght that = (Lenght)o;
-            return that.Value==Value &&  that.UnitType == UnitType;
+            return that.Value == Value && that.UnitType == UnitType;
         }
 
         public bool Compare(Lenght that)
@@ -80,15 +90,29 @@ namespace QuantityMeasurement.BridgeLabz
             {
                 return this.Value.CompareTo(that.Value) == 0;
             }
-
             if (this.UnitType.Equals(Unit.FEET) && that.UnitType.Equals(Unit.INCH))
             {
                 return this.Value * FEET_TO_INCH.CompareTo(that.Value) == 0;
             }
-
             if (this.UnitType.Equals(Unit.INCH) && that.UnitType.Equals(Unit.FEET))
             {
                 return (this.Value / FEET_TO_INCH).CompareTo(that.Value) == 0;
+            }
+            if (this.UnitType.Equals(Unit.YARD) && that.UnitType.Equals(Unit.FEET))
+            {
+                return (this.Value * YARD_TO_INCH).CompareTo(that.Value * FEET_TO_INCH) == 0;
+            }
+            if (this.UnitType.Equals(Unit.YARD) && that.UnitType.Equals(Unit.INCH))
+            {
+                return (this.Value * YARD_TO_INCH).CompareTo(that.Value) == 0;
+            }
+            if (this.UnitType.Equals(Unit.INCH) && that.UnitType.Equals(Unit.YARD))
+            {
+                return (this.Value).CompareTo(that.Value * YARD_TO_INCH) == 0;
+            }
+            if (this.UnitType.Equals(Unit.FEET) && that.UnitType.Equals(Unit.YARD))
+            {
+                return (this.Value * FEET_TO_INCH).CompareTo(that.Value * YARD_TO_INCH) == 0;
             }
             return false;
         }

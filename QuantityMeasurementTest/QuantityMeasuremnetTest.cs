@@ -380,13 +380,24 @@ namespace QuantityMeasurement.BridgeLabz
         /// Test case 6.1 :Given 1 Gallon and 3.78 litres should return 7.56 Litres
         /// </summary>
         [Test]
-        public void Given1GallonAnd3point78Litres_WhenAdded_ShouldReturn7point56Inch()
+        public void Given_1GallonAnd3point78Litres_WhenAdded_ShouldReturn7point56Inch()
         {
             QuantitiyMeasurement gallon = new QuantitiyMeasurement(Unit.GALLON, 1.0);
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 3.78);
-            double additionCheck = measurement.Addition(gallon, litre);
-            Assert.AreEqual(8.0, additionCheck);
+            double addition = measurement.Addition(gallon, litre);
+            Assert.AreEqual(8.0, addition);
+        }
 
+        /// <summary>
+        /// Test case 62. :Given 1 litre and 3.78 milliliter should return 2 Litres
+        /// </summary>
+        [Test]
+        public void Given_1LitreAnd1000Ml_WhenAdded_ShouldReturn2Litres()
+        {
+            QuantitiyMeasurement litre = new QuantitiyMeasurement(QuantitiyMeasurement.Unit.LITRE, 1.0);
+            QuantitiyMeasurement milliliter = new QuantitiyMeasurement(QuantitiyMeasurement.Unit.MiLLILITERS, 1000.0);
+            double addition = measurement.Addition(litre, milliliter);
+            Assert.AreEqual(2.0, addition);
         }
     }
 }

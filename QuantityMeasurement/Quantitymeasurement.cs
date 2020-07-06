@@ -3,15 +3,16 @@
 // Copyright (c) 2020 All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
-using System;
 
 namespace QuantityMeasurement.BridgeLabz
 {
+using System;
+
 #pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     /// <summary>
     /// Lenght conversion
     /// </summary>
-    public class Lenght
+    public class QuantitiyMeasurement : Units
 #pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
 
@@ -26,61 +27,23 @@ namespace QuantityMeasurement.BridgeLabz
         public Unit UnitType;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Lenght"/> class
+        /// Initializes a new instance of the <see cref="QuantitiyMeasurement"/> class
         /// </summary>
-        public Lenght()
+        public QuantitiyMeasurement()
         {
 
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Lenght"/> class
+        /// Initializes a new instance of the <see cref="QuantitiyMeasurement"/> class
         /// </summary>
         /// <param name="unit">Unit to be converted</param>
         /// <param name="value">value of unit</param>
-        public Lenght(Unit unit, double value)
+        public QuantitiyMeasurement(Unit unit, double value)
         {
             this.UnitType = unit;
             this.Value = value;
         }
-
-        public enum Unit
-        {
-            /// <summary>
-            /// comaparing feet
-            /// </summary>
-            FEET,
-
-            /// <summary>
-            /// comparing inch
-            /// </summary>
-            INCH,
-
-            /// <summary>
-            /// comparing yard
-            /// </summary>
-            YARD,
-
-            /// <summary>
-            /// comparing centimeter
-            /// </summary>
-            CMS,
-
-            /// <summary>
-            /// comparing gallon
-            /// </summary>
-            GALLON,
-
-            /// <summary>
-            /// comparing milliliter
-            /// </summary>
-            MiLLILITERS,
-                    
-            /// <summary>
-            /// comapring litres
-            /// </summary>
-             LITRE
-        };
 
         /// <summary>
         /// Overriding Equals Function.
@@ -92,7 +55,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             if (this == o) return true;
             if (o == null) return false;
-            Lenght that = (Lenght)o;
+            QuantitiyMeasurement that = (QuantitiyMeasurement)o;
             return that.Value == Value && that.UnitType == UnitType;
         }
 
@@ -130,7 +93,7 @@ namespace QuantityMeasurement.BridgeLabz
         /// <param name="firstUnit"></param>
         /// <param name="secondUnit"></param>
         /// <returns>Condtion according to comparision</returns>
-        public bool UnitConversion(Lenght firstUnit, Lenght secondUnit)
+        public bool UnitConversion(QuantitiyMeasurement firstUnit, QuantitiyMeasurement secondUnit)
         {
             double baseUnit1 = GetUnits(firstUnit.UnitType);
             double baseUnit2 = GetUnits(secondUnit.UnitType);
@@ -145,7 +108,7 @@ namespace QuantityMeasurement.BridgeLabz
         /// <param name="firstBaseUnit">First base unit</param>
         /// <param name="secondBaseUnit">Second base unit</param>
         /// <returns>Boolean condtion according to comparsion</returns>
-        private bool CompareUnits(Lenght firstUnit, Lenght secountUnit, double firstBaseUnit, double secondBaseUnit)
+        private bool CompareUnits(QuantitiyMeasurement firstUnit, QuantitiyMeasurement secountUnit, double firstBaseUnit, double secondBaseUnit)
         {
             return Math.Round(firstUnit.Value * firstBaseUnit).CompareTo(Math.Round(secountUnit.Value * secondBaseUnit)) == 0;
         }
@@ -156,7 +119,7 @@ namespace QuantityMeasurement.BridgeLabz
         /// <param name="firstUnit"></param>
         /// <param name="secondUnit"></param>
         /// <returns>Addition of two units</returns>
-        public double Addition(Lenght firstUnit, Lenght secondUnit)
+        public double Addition(QuantitiyMeasurement firstUnit, QuantitiyMeasurement secondUnit)
         {
             double baseUnit1 = GetUnits(firstUnit.UnitType);
             double baseUnit2 = GetUnits(secondUnit.UnitType);

@@ -16,7 +16,7 @@ namespace QuantityMeasurement.BridgeLabz
         /// <summary>
         /// Instance of length
         /// </summary>
-       private QuantitiyMeasurement lenght = null;
+       private QuantitiyMeasurement measurement = null;
 
         /// <summary>
         /// setup method
@@ -24,7 +24,7 @@ namespace QuantityMeasurement.BridgeLabz
         [SetUp]
         public void Setup()
         {
-            this.lenght = new QuantitiyMeasurement();
+            this.measurement = new QuantitiyMeasurement();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement firstFeet = new QuantitiyMeasurement(Unit.FEET, 0.0);
             QuantitiyMeasurement secondFeet = new QuantitiyMeasurement(Unit.INCH, 0.0);
-            Assert.IsTrue(this.lenght.UnitConversion(firstFeet, secondFeet));
+            Assert.IsTrue(this.measurement.UnitConversion(firstFeet, secondFeet));
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch1 = new QuantitiyMeasurement(Unit.INCH, 1.0);
             QuantitiyMeasurement inch2 = new QuantitiyMeasurement(Unit.INCH, 2.0);
-            bool compare = lenght.UnitConversion(inch1, inch2);
+            bool compare = measurement.UnitConversion(inch1, inch2);
             Assert.IsFalse(compare);
         }
         //// <summary>
@@ -179,7 +179,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 1.0);
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 12.0);
-            bool compare = lenght.UnitConversion(feet, inch);
+            bool compare = measurement.UnitConversion(feet, inch);
             Assert.IsTrue(compare);
         }
         //// <summary>
@@ -190,7 +190,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 12.0);
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 1.0);
-            bool compare = lenght.UnitConversion(inch, feet);
+            bool compare = measurement.UnitConversion(inch, feet);
             Assert.IsTrue(compare);
         }
 
@@ -202,7 +202,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 3.0);
-            bool compare = lenght.UnitConversion(yard, feet);
+            bool compare = measurement.UnitConversion(yard, feet);
             Assert.IsTrue(compare);
         }
 
@@ -214,7 +214,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 1.0);
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
-            bool compare = lenght.UnitConversion(feet, yard);
+            bool compare = measurement.UnitConversion(feet, yard);
             Assert.IsFalse(compare);
         }
 
@@ -226,7 +226,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 36.0);
-            bool compare = lenght.UnitConversion(yard, inch);
+            bool compare = measurement.UnitConversion(yard, inch);
             Assert.IsTrue(compare);
         }
 
@@ -238,7 +238,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 36.0);
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
-            bool compare = lenght.UnitConversion(inch, yard);
+            bool compare = measurement.UnitConversion(inch, yard);
             Assert.IsTrue(compare);
         }
 
@@ -250,7 +250,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 3.0);
-            bool compare = lenght.UnitConversion(yard, feet);
+            bool compare = measurement.UnitConversion(yard, feet);
             Assert.IsTrue(compare);
         }
 
@@ -263,7 +263,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 2.0);
             QuantitiyMeasurement cm = new QuantitiyMeasurement(Unit.CMS, 5.0);
-            bool compare = lenght.UnitConversion(inch, cm);
+            bool compare = measurement.UnitConversion(inch, cm);
             Assert.IsTrue(compare);
         }
 
@@ -275,7 +275,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 5.0);
             QuantitiyMeasurement cm = new QuantitiyMeasurement(Unit.CMS, 5.0);
-            bool compare = lenght.UnitConversion(inch, cm);
+            bool compare = measurement.UnitConversion(inch, cm);
             Assert.IsFalse(compare);
         }
 
@@ -287,7 +287,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch1 = new QuantitiyMeasurement(Unit.INCH, 2.0);
             QuantitiyMeasurement inch2 = new QuantitiyMeasurement(Unit.INCH, 2.0);
-            double addition = lenght.Addition(inch1, inch2);
+            double addition = measurement.Addition(inch1, inch2);
             Assert.AreEqual(4, addition);
         }
 
@@ -299,7 +299,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 1.0);
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 2.0);
-            double addition = lenght.Addition(feet, inch);
+            double addition = measurement.Addition(feet, inch);
             Assert.AreEqual(14, addition);
         }
 
@@ -311,7 +311,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement feet1 = new QuantitiyMeasurement(Unit.FEET, 1.0);
             QuantitiyMeasurement feet2 = new QuantitiyMeasurement(Unit.FEET, 1.0);
-            double addition = lenght.Addition(feet1, feet2);
+            double addition = measurement.Addition(feet1, feet2);
             Assert.AreEqual(24, addition);
         }
 
@@ -323,7 +323,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch1 = new QuantitiyMeasurement(Unit.INCH, 2.0);
             QuantitiyMeasurement cms2 = new QuantitiyMeasurement(Unit.CMS, 2.5);
-            double addition = lenght.Addition(inch1, cms2);
+            double addition = measurement.Addition(inch1, cms2);
             Assert.AreEqual(3, addition);
         }
 
@@ -335,7 +335,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement gallon = new QuantitiyMeasurement(Unit.GALLON, 1.0);
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 3.78);
-            bool compare = lenght.UnitConversion(gallon, litre);
+            bool compare = measurement.UnitConversion(gallon, litre);
             Assert.IsTrue(compare);
         }
 
@@ -347,7 +347,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 1.0);
             QuantitiyMeasurement milliliter = new QuantitiyMeasurement(Unit.MiLLILITERS, 1000.0);
-            bool compare = lenght.UnitConversion(litre, milliliter);
+            bool compare = measurement.UnitConversion(litre, milliliter);
             Assert.IsTrue(compare);
         }
 
@@ -360,7 +360,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 1);
             QuantitiyMeasurement milliLiter = new QuantitiyMeasurement(Unit.MiLLILITERS, 1);
-            bool compare = lenght.UnitConversion(litre, milliLiter);
+            bool compare = measurement.UnitConversion(litre, milliLiter);
             Assert.IsFalse(compare);
         }
 
@@ -372,8 +372,21 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement gallon = new QuantitiyMeasurement(Unit.GALLON, 1);
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 1);
-            bool compare = lenght.UnitConversion(gallon, litre);
+            bool compare = measurement.UnitConversion(gallon, litre);
             Assert.IsFalse(compare);
+        }
+
+        /// <summary>
+        /// Test case 6.1 :Given 1 Gallon and 3.78 litres should return 7.56 Litres
+        /// </summary>
+        [Test]
+        public void Given1GallonAnd3point78Litres_WhenAdded_ShouldReturn7point56Inch()
+        {
+            QuantitiyMeasurement gallon = new QuantitiyMeasurement(Unit.GALLON, 1.0);
+            QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 3.78);
+            double additionCheck = measurement.Addition(gallon, litre);
+            Assert.AreEqual(8.0, additionCheck);
+
         }
     }
 }

@@ -58,7 +58,17 @@ namespace QuantityMeasurement.BridgeLabz
             /// <summary>
             /// comapring Ton
             /// </summary>
-            TON
+            TON,
+
+            /// <summary>
+            /// comparing fahrenheit
+            /// </summary>
+            FAHRENHEIT,
+
+            /// <summary>
+            /// comparing celsius
+            /// </summary>
+            CELSIUS
         };
     }
 }

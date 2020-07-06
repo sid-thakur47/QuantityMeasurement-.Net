@@ -118,7 +118,7 @@ using System;
         {
             return Math.Round(firstUnit.Value * firstBaseUnit).CompareTo(Math.Round(secountUnit.Value * secondBaseUnit)) == 0;
         }
-        
+
         /// <summary>
         /// Addition of two units
         /// </summary>
@@ -130,6 +130,24 @@ using System;
             double baseUnit1 = GetUnits(firstUnit.UnitType);
             double baseUnit2 = GetUnits(secondUnit.UnitType);
             return Math.Round(firstUnit.Value * baseUnit1) + Math.Round(secondUnit.Value * baseUnit2);
+        }
+        /// <summary>
+        /// COmparing temperature
+        /// </summary>
+        /// <param name="temp1">first temperature value</param>
+        /// <param name="temp2">second temperature value</param>
+        /// <returns>Boolean condtion according to comparision</returns>
+        public bool TempConversion(QuantitiyMeasurement temp1, QuantitiyMeasurement temp2)
+        {
+            if (temp1.UnitType.Equals(Unit.FAHRENHEIT) && temp2.UnitType.Equals(Unit.CELSIUS))
+            {
+                return ((temp1.Value - 32) * 5 / 9).CompareTo(temp2.Value) == 0;
+            }
+            else if (temp1.UnitType.Equals(Unit.CELSIUS) && temp2.UnitType.Equals(Unit.FAHRENHEIT))
+            {
+                return ((temp1.Value * 9 / 5) + 32).CompareTo(temp2.Value) == 0;
+            }
+            return false;
         }
     }
 }

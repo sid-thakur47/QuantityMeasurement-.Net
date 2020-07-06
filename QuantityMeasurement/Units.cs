@@ -43,7 +43,22 @@ namespace QuantityMeasurement.BridgeLabz
             /// <summary>
             /// comapring litres
             /// </summary>
-             LITRE
+             LITRE,
+
+            /// <summary>
+            /// comapring Killogram
+            /// </summary>
+            KILLOGRAM,
+
+            /// <summary>
+            /// comapring grams
+            /// </summary>
+            GRAM,
+
+            /// <summary>
+            /// comapring Ton
+            /// </summary>
+            TON
         };
     }
 }

@@ -82,6 +82,12 @@ using System;
                     return 1;
                 case Unit.MiLLILITERS:
                     return 0.001;
+                case Unit.KILLOGRAM:
+                    return 1;
+                case Unit.GRAM:
+                    return 0.001;
+                case Unit.TON:
+                    return 1000.0;
                 default:
                     return 0;
             }

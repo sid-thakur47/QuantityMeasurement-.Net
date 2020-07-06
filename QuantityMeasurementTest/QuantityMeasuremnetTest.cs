@@ -401,7 +401,7 @@ namespace QuantityMeasurement.BridgeLabz
         }
 
         /// <summary>
-        /// Test case 6.2 :Given 1 Kg and 1000 grams when compared should return True
+        /// Test case 7.1 :Given 1 Kg and 1000 grams when compared should return True
         /// </summary>
         [Test]
         public void Given_1KgAnd1000Grams_WhenCompared_ShouldReturnTrue()
@@ -409,6 +409,18 @@ namespace QuantityMeasurement.BridgeLabz
             QuantitiyMeasurement killogram = new QuantitiyMeasurement(Unit.KILLOGRAM, 1.0);
             QuantitiyMeasurement gram = new QuantitiyMeasurement(Unit.GRAM, 1000.0);
             bool compare = measurement.UnitConversion(killogram, gram);
+            Assert.IsTrue(compare);
+        }
+
+        /// <summary>
+        /// Test case 7.2 :Given 1 Ton and 1000 Kgs when compared should return True
+        /// </summary>
+        [Test]
+        public void Given1TonAnd1000Kgs_WhenCompared_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement ton = new QuantitiyMeasurement(Unit.TON, 1.0);
+            QuantitiyMeasurement killogram = new QuantitiyMeasurement(Unit.KILLOGRAM, 1000.0);
+            bool compare = measurement.UnitConversion(ton, killogram);
             Assert.IsTrue(compare);
         }
     }

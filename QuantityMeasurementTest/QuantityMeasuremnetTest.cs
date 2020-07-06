@@ -389,7 +389,7 @@ namespace QuantityMeasurement.BridgeLabz
         }
 
         /// <summary>
-        /// Test case 62. :Given 1 litre and 3.78 milliliter should return 2 Litres
+        /// Test case 6.2 :Given 1 litre and 3.78 milliliter should return 2 Litres
         /// </summary>
         [Test]
         public void Given_1LitreAnd1000Ml_WhenAdded_ShouldReturn2Litres()
@@ -398,6 +398,18 @@ namespace QuantityMeasurement.BridgeLabz
             QuantitiyMeasurement milliliter = new QuantitiyMeasurement(QuantitiyMeasurement.Unit.MiLLILITERS, 1000.0);
             double addition = measurement.Addition(litre, milliliter);
             Assert.AreEqual(2.0, addition);
+        }
+
+        /// <summary>
+        /// Test case 6.2 :Given 1 Kg and 1000 grams when compared should return True
+        /// </summary>
+        [Test]
+        public void Given_1KgAnd1000Grams_WhenCompared_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement killogram = new QuantitiyMeasurement(Unit.KILLOGRAM, 1.0);
+            QuantitiyMeasurement gram = new QuantitiyMeasurement(Unit.GRAM, 1000.0);
+            bool compare = measurement.UnitConversion(killogram, gram);
+            Assert.IsTrue(compare);
         }
     }
 }

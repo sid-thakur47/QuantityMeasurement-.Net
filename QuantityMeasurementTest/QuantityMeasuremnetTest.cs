@@ -423,5 +423,17 @@ namespace QuantityMeasurement.BridgeLabz
             bool compare = measurement.UnitConversion(ton, killogram);
             Assert.IsTrue(compare);
         }
+
+        /// <summary>
+        /// Test case 7.3 :Addition of 1 Ton and 1000 Grams which should return 1001 Kgs
+        /// </summary>
+        [Test]
+        public void Given1TonAnd1000Grams_WhenAdded_ShouldReturn1001Kgs()
+        {
+            QuantitiyMeasurement ton = new QuantitiyMeasurement(Unit.TON, 1.0);
+            QuantitiyMeasurement gram = new QuantitiyMeasurement(Unit.GRAM, 1000.0);
+            double addition = measurement.Addition(ton, gram);
+            Assert.AreEqual(1001.0, addition);
+        }
     }
 }

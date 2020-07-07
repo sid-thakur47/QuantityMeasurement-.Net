@@ -6,12 +6,18 @@
 
 namespace QuantityMeasurement.BridgeLabz
 {
+    /// <summary>
+    /// Unit class
+    /// </summary>
    public class Units
     {
-         public enum Unit
+        /// <summary>
+        /// Enum for comparing
+        /// </summary>
+        public enum Unit
         {
             /// <summary>
-            /// comaparing feet
+            /// comparing feet
             /// </summary>
             FEET,
 
@@ -39,24 +45,24 @@ namespace QuantityMeasurement.BridgeLabz
             /// comparing milliliter
             /// </summary>
             MiLLILITERS,
-                    
-            /// <summary>
-            /// comapring litres
-            /// </summary>
-             LITRE,
 
             /// <summary>
-            /// comapring Killogram
+            /// comparing liter
+            /// </summary>
+            LITRE,
+
+            /// <summary>
+            /// comparing Kilogram
             /// </summary>
             KILLOGRAM,
 
             /// <summary>
-            /// comapring grams
+            /// comparing grams
             /// </summary>
             GRAM,
 
             /// <summary>
-            /// comapring Ton
+            /// comparing Ton
             /// </summary>
             TON,
 
@@ -69,6 +75,6 @@ namespace QuantityMeasurement.BridgeLabz
             /// comparing celsius
             /// </summary>
             CELSIUS
-        };
+        }
     }
 }

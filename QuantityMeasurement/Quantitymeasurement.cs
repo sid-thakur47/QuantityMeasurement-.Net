@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Lenght.cs" company="BridgeLabz">
+// <copyright file="QuantitiyMeasurement.cs" company="BridgeLabz">
 // Copyright (c) 2020 All Rights Reserved
 // </copyright>
 //-----------------------------------------------------------------------
@@ -8,30 +8,26 @@ namespace QuantityMeasurement.BridgeLabz
 {
 using System;
 
-#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     /// <summary>
-    /// Lenght conversion
+    /// Quantity Measurement
     /// </summary>
     public class QuantitiyMeasurement : Units
-#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
+        /// <summary>
+        /// Value of unit
+        /// </summary>
+        private double value;
 
-        //// <summary>
-        //// va;ue of unit
-        //// </summary>
-        public double Value;
-
-        //// <summary>
-        //// Unit to be converted
-        //// </summary>
-        public Unit UnitType;
+        /// <summary>
+        /// Type of unit
+        /// </summary>
+        private Unit unitType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QuantitiyMeasurement"/> class
         /// </summary>
         public QuantitiyMeasurement()
         {
-
         }
 
         /// <summary>
@@ -41,28 +37,95 @@ using System;
         /// <param name="value">value of unit</param>
         public QuantitiyMeasurement(Unit unit, double value)
         {
-            this.UnitType = unit;
-            this.Value = value;
+            this.unitType = unit;
+            this.value = value;
         }
 
         /// <summary>
         /// Overriding Equals Function.
         /// </summary>
-        /// <param name="obj">Object for comparing</param>
+        /// <param name="o">Object for comparing</param>
         /// <returns>Boolean after equality check</returns>
         override
        public bool Equals(object o)
         {
-            if (this == o) return true;
-            if (o == null) return false;
+            if (this == o) 
+            {
+                return true;
+            }
+
+            if (o == null)
+            {
+                return false;
+            }
+
             QuantitiyMeasurement that = (QuantitiyMeasurement)o;
-            return that.Value == Value && that.UnitType == UnitType;
+            return that.value == this.value && that.unitType == this.unitType;
         }
 
         /// <summary>
-        /// To get the baseunits
+        /// To convert the values of the units
         /// </summary>
-        /// <param name="unit"></param>
+        /// <param name="firstUnit">First unit</param>
+        /// <param name="secondUnit">Second unit</param>
+        /// <returns>Condition according to comparison</returns>
+        public bool UnitConversion(QuantitiyMeasurement firstUnit, QuantitiyMeasurement secondUnit)
+        {
+            double firstBaseUnit = this.GetUnits(firstUnit.unitType);
+            double secondBaseUnit = this.GetUnits(secondUnit.unitType);
+            return this.CompareUnits(firstUnit, secondUnit, firstBaseUnit, secondBaseUnit);
+        }
+
+        /// <summary>
+        /// Addition of  unit
+        /// </summary>
+        /// <param name="firstUnit">first unit for addition</param>
+        /// <param name="secondUnit">second unit for addition></param>
+        /// <returns>addition of both units</returns>
+        public double Addition(QuantitiyMeasurement firstUnit, QuantitiyMeasurement secondUnit)
+        {
+            double baseUnit1 = this.GetUnits(firstUnit.unitType);
+            double baseUnit2 = this.GetUnits(secondUnit.unitType);
+            return Math.Round(firstUnit.value * baseUnit1) + Math.Round(secondUnit.value * baseUnit2);
+        }
+
+        /// <summary>
+        /// Temperature conversion
+        /// </summary>
+        /// <param name="firstTemp">first temperature for comparison </param>
+        /// <param name="secondTemp">second temperature comparison</param>
+        /// <returns>boolean condition according to comparison</returns>
+        public bool ConvertTemperature(QuantitiyMeasurement firstTemp, QuantitiyMeasurement secondTemp)
+        {
+            if (firstTemp.unitType.Equals(Unit.FAHRENHEIT) && secondTemp.unitType.Equals(Unit.CELSIUS))
+            {
+                return ((firstTemp.value - 32) * 5 / 9).CompareTo(secondTemp.value) == 0;
+            }
+            else if (firstTemp.unitType.Equals(Unit.CELSIUS) && secondTemp.unitType.Equals(Unit.FAHRENHEIT))
+            {
+                return ((firstTemp.value * 9 / 5) + 32).CompareTo(secondTemp.value) == 0;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// To compare the values of the units
+        /// </summary>
+        /// <param name="firstUnit">First unit for comparison</param>
+        /// <param name="secountUnit">Second unit for comparison</param>
+        /// <param name="firstBaseUnit">First base unit</param>
+        /// <param name="secondBaseUnit">Second base unit</param>
+        /// <returns>Boolean condition according to comparison</returns>
+        private bool CompareUnits(QuantitiyMeasurement firstUnit, QuantitiyMeasurement secountUnit, double firstBaseUnit, double secondBaseUnit)
+        {
+            return Math.Round(firstUnit.value * firstBaseUnit).CompareTo(Math.Round(secountUnit.value * secondBaseUnit)) == 0;
+        }
+
+        /// <summary>
+        /// To get the base units
+        /// </summary>
+        /// <param name="unit"> Unit to be converted</param>
         /// <returns> Unit values</returns>
         private double GetUnits(Unit unit)
         {
@@ -91,63 +154,6 @@ using System;
                 default:
                     return 0;
             }
-        }
-
-        /// <summary>
-        /// To convert the values of the units
-        /// </summary>
-        /// <param name="firstUnit"></param>
-        /// <param name="secondUnit"></param>
-        /// <returns>Condtion according to comparision</returns>
-        public bool UnitConversion(QuantitiyMeasurement firstUnit, QuantitiyMeasurement secondUnit)
-        {
-            double baseUnit1 = GetUnits(firstUnit.UnitType);
-            double baseUnit2 = GetUnits(secondUnit.UnitType);
-            return CompareUnits(firstUnit, secondUnit, baseUnit1, baseUnit2);
-        }
-
-        /// <summary>
-        /// To compare the values of the units
-        /// </summary>
-        /// <param name="firstUnit">First unit for comparision</param>
-        /// <param name="secountUnit">Second unit for comparision</param>
-        /// <param name="firstBaseUnit">First base unit</param>
-        /// <param name="secondBaseUnit">Second base unit</param>
-        /// <returns>Boolean condtion according to comparsion</returns>
-        private bool CompareUnits(QuantitiyMeasurement firstUnit, QuantitiyMeasurement secountUnit, double firstBaseUnit, double secondBaseUnit)
-        {
-            return Math.Round(firstUnit.Value * firstBaseUnit).CompareTo(Math.Round(secountUnit.Value * secondBaseUnit)) == 0;
-        }
-
-        /// <summary>
-        /// Addition of two units
-        /// </summary>
-        /// <param name="firstUnit"></param>
-        /// <param name="secondUnit"></param>
-        /// <returns>Addition of two units</returns>
-        public double Addition(QuantitiyMeasurement firstUnit, QuantitiyMeasurement secondUnit)
-        {
-            double baseUnit1 = GetUnits(firstUnit.UnitType);
-            double baseUnit2 = GetUnits(secondUnit.UnitType);
-            return Math.Round(firstUnit.Value * baseUnit1) + Math.Round(secondUnit.Value * baseUnit2);
-        }
-        /// <summary>
-        /// COmparing temperature
-        /// </summary>
-        /// <param name="temp1">first temperature value</param>
-        /// <param name="temp2">second temperature value</param>
-        /// <returns>Boolean condtion according to comparision</returns>
-        public bool TempConversion(QuantitiyMeasurement temp1, QuantitiyMeasurement temp2)
-        {
-            if (temp1.UnitType.Equals(Unit.FAHRENHEIT) && temp2.UnitType.Equals(Unit.CELSIUS))
-            {
-                return ((temp1.Value - 32) * 5 / 9).CompareTo(temp2.Value) == 0;
-            }
-            else if (temp1.UnitType.Equals(Unit.CELSIUS) && temp2.UnitType.Equals(Unit.FAHRENHEIT))
-            {
-                return ((temp1.Value * 9 / 5) + 32).CompareTo(temp2.Value) == 0;
-            }
-            return false;
         }
     }
 }

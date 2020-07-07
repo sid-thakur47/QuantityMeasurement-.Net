@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantityMeasurement", "QuantityMeasurement\QuantityMeasurement.csproj", "{6F809AE4-DD71-4A68-B4EA-6A3FF8D9605A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantityMeasurement", "QuantityMeasurement\QuantityMeasurement.csproj", "{6F809AE4-DD71-4A68-B4EA-6A3FF8D9605A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantityMeasurementTest", "QuantityMeasurementTest\QuantityMeasurementTest.csproj", "{3DB1C230-60C4-490C-80A4-96606799756B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantityMeasurementTest", "QuantityMeasurementTest\QuantityMeasurementTest.csproj", "{3DB1C230-60C4-490C-80A4-96606799756B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1A2F519-CC94-4E6F-95D7-60DFCF062B46}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

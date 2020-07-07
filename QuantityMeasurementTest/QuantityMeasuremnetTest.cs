@@ -160,100 +160,135 @@ namespace QuantityMeasurement.BridgeLabz
             Assert.AreNotEqual(feet1, inch1);
         }
 
-        //// <summary>
-        //// Test case 1.13: Given 1 inch and 2 inch  should return false
-        //// </summary>
+        /// <summary>
+        /// Test case 1.13: Given 1 inch and 2 inch  should return false
+        /// </summary>
         [Test]
         public void Given_OneInchAndOneInch_When_UnitConversiond_ShouldReturnFalse()
         {
             QuantitiyMeasurement inch1 = new QuantitiyMeasurement(Unit.INCH, 1.0);
             QuantitiyMeasurement inch2 = new QuantitiyMeasurement(Unit.INCH, 2.0);
-            bool compare = measurement.UnitConversion(inch1, inch2);
+            bool compare = this.measurement.UnitConversion(inch1, inch2);
             Assert.IsFalse(compare);
         }
-        //// <summary>
-        //// Test case 1.14: Given 1 feet and 12 inch when converted should return true
-        //// </summary
+
+        /// <summary>
+        /// Test case 1.14: Given 1 feet and 12 inch when converted should return true
+        /// </summary>
         [Test]
         public void Given_FeetAndInch_When_UnitConversiond_ShouldReturnTrue()
         {
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 1.0);
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 12.0);
-            bool compare = measurement.UnitConversion(feet, inch);
+            bool compare = this.measurement.UnitConversion(feet, inch);
             Assert.IsTrue(compare);
         }
-        //// <summary>
-        //// Test case 1.15 Given 12 inch and 1Feet when UnitConversiond should return treu
-        //// </summary
+
+        /// <summary>
+        /// Test case 1.15 Given 12 inch and 1Feet when converted should return true
+        /// </summary>
         [Test]
         public void Given_12InchAnd1Feet_When_UnitConversiond_ShouldReturnTrue()
         {
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 12.0);
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 1.0);
-            bool compare = measurement.UnitConversion(inch, feet);
+            bool compare = this.measurement.UnitConversion(inch, feet);
             Assert.IsTrue(compare);
         }
 
-        //// <summary>
-        //// Test case  2.1:Given yard and feet when converted and compared should return true
-        //// </summary
+        /// <summary>
+        /// Test case  2.1:Given yard and feet when converted and compared should return true
+        /// </summary>
         [Test]
         public void Given_OneYardAndThreeFeet_When_UnitConversiond_ShouldReturnTrue()
         {
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 3.0);
-            bool compare = measurement.UnitConversion(yard, feet);
+            bool compare = this.measurement.UnitConversion(yard, feet);
             Assert.IsTrue(compare);
         }
 
-        //// <summary>
-        //// Test case 2.2: Given 1 yard and 1 feet when compared returns false
-        //// </summary
+        /// <summary>
+        /// Test case  Negative:Given negative yard and feet when converted and compared should return false
+        /// </summary>
+        [Test]
+        public void Given_OneYardAndMinus1Feet_When_Compared_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, -1.0);
+            QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 3.0);
+            bool compare = this.measurement.UnitConversion(yard, feet);
+            Assert.IsFalse(compare);
+        }
+
+        /// <summary>
+        /// Test case 2.2: Given 1 yard and 1 feet when compared returns false
+        /// </summary>
         [Test]
         public void Given_OneFeetAndOneYard_When_UnitConversiond_ShouldReturnFalse()
         {
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 1.0);
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
-            bool compare = measurement.UnitConversion(feet, yard);
+            bool compare = this.measurement.UnitConversion(feet, yard);
             Assert.IsFalse(compare);
         }
 
-        [Test]
-        //// <summary>
-        //// Test case 2.3: Given 1 yard and 36 inch when compared returns true
-        //// </summary
+        /// <summary>
+        /// Test case 2.3: Given 1 yard and 36 inch when compared returns true
+        /// </summary>
         public void Given_OneYardAnd36Inch_When_UnitConversiond_ShouldReturnEqualLength()
         {
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 36.0);
-            bool compare = measurement.UnitConversion(yard, inch);
+            bool compare = this.measurement.UnitConversion(yard, inch);
             Assert.IsTrue(compare);
         }
 
-        //// <summary>
-        //// Test case 2.4: Given 36 inch and 1 yard when compared returns true
-        //// </summary
+        /// <summary>
+        /// Test case Negative: Given 1 yard and 36 inch when compared returns true
+        /// </summary>
+        public void Given_OneNeagtiveYardAnd36Inch_When_UnitConversiond_ShouldReturnEqualLength()
+        {
+            QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, -1.0);
+            QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 36.0);
+            bool compare = this.measurement.UnitConversion(yard, inch);
+            Assert.IsFalse(compare);
+        }
+
+        /// <summary>
+        /// Test case 2.4: Given 36 inch and 1 yard when compared returns true
+        /// </summary>
         [Test]
         public void Given_36InchAnd1yard_When_UnitConversiond_ShouldReturnEqualLength()
         {
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 36.0);
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
-            bool compare = measurement.UnitConversion(inch, yard);
+            bool compare = this.measurement.UnitConversion(inch, yard);
             Assert.IsTrue(compare);
         }
 
-        //// <summary>
-        //// Test case 2.5: Given 3 feet and 1 yard when compared should return true
-        //// </summary
+        /// <summary>
+        /// Test case 2.5: Given 3 feet and 1 yard when compared should return true
+        /// </summary>
         [Test]
         public void Given_3FeetAnd1Yard_WhenUnitConversiond_ShouldReturnTrue()
         {
             QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 3.0);
-            bool compare = measurement.UnitConversion(yard, feet);
+            bool compare = this.measurement.UnitConversion(yard, feet);
             Assert.IsTrue(compare);
         }
 
+        /// <summary>
+        /// Test case Negative: Given  feet negative and 1 yard when compared should return true
+        /// </summary>
+        [Test]
+        public void Given_3NegativeFeetAnd1Yard_WhenUnitConversiond_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement yard = new QuantitiyMeasurement(Unit.YARD, 1.0);
+            QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, -3.0);
+            bool compare = this.measurement.UnitConversion(yard, feet);
+            Assert.IsFalse(compare);
+        }
 
         /// <summary>
         /// Test case 3: Given 2 inch and 5 cm when compared should return true
@@ -263,8 +298,20 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 2.0);
             QuantitiyMeasurement cm = new QuantitiyMeasurement(Unit.CMS, 5.0);
-            bool compare = measurement.UnitConversion(inch, cm);
+            bool compare = this.measurement.UnitConversion(inch, cm);
             Assert.IsTrue(compare);
+        }
+
+        /// <summary>
+        /// Test case Neagtive: Given Negative inch and 5 cm when compared should return true
+        /// </summary>
+        [Test]
+        public void Given_Negative2InchAnd5Cms_WhenCompared_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, -2.0);
+            QuantitiyMeasurement cm = new QuantitiyMeasurement(Unit.CMS, 5.0);
+            bool compare = this.measurement.UnitConversion(inch, cm);
+            Assert.IsFalse(compare);
         }
 
         /// <summary>
@@ -275,7 +322,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 5.0);
             QuantitiyMeasurement cm = new QuantitiyMeasurement(Unit.CMS, 5.0);
-            bool compare = measurement.UnitConversion(inch, cm);
+            bool compare = this.measurement.UnitConversion(inch, cm);
             Assert.IsFalse(compare);
         }
 
@@ -287,7 +334,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch1 = new QuantitiyMeasurement(Unit.INCH, 2.0);
             QuantitiyMeasurement inch2 = new QuantitiyMeasurement(Unit.INCH, 2.0);
-            double addition = measurement.Addition(inch1, inch2);
+            double addition = this.measurement.Addition(inch1, inch2);
             Assert.AreEqual(4, addition);
         }
 
@@ -299,7 +346,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement feet = new QuantitiyMeasurement(Unit.FEET, 1.0);
             QuantitiyMeasurement inch = new QuantitiyMeasurement(Unit.INCH, 2.0);
-            double addition = measurement.Addition(feet, inch);
+            double addition = this.measurement.Addition(feet, inch);
             Assert.AreEqual(14, addition);
         }
 
@@ -311,7 +358,7 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement feet1 = new QuantitiyMeasurement(Unit.FEET, 1.0);
             QuantitiyMeasurement feet2 = new QuantitiyMeasurement(Unit.FEET, 1.0);
-            double addition = measurement.Addition(feet1, feet2);
+            double addition = this.measurement.Addition(feet1, feet2);
             Assert.AreEqual(24, addition);
         }
 
@@ -323,80 +370,91 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement inch1 = new QuantitiyMeasurement(Unit.INCH, 2.0);
             QuantitiyMeasurement cms2 = new QuantitiyMeasurement(Unit.CMS, 2.5);
-            double addition = measurement.Addition(inch1, cms2);
+            double addition = this.measurement.Addition(inch1, cms2);
             Assert.AreEqual(3, addition);
         }
 
         /// <summary>
-        /// Test case 5.1: Given gallon 1 and 3.78 litres when compared should return true
+        /// Test case 5.1: Given gallon 1 and 3.78 liter when compared should return true
         /// </summary>
         [Test]
         public void Given_1GallonAnd3Point78Litres_WhenCompared_ShouldReturnTrue()
         {
             QuantitiyMeasurement gallon = new QuantitiyMeasurement(Unit.GALLON, 1.0);
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 3.78);
-            bool compare = measurement.UnitConversion(gallon, litre);
+            bool compare = this.measurement.UnitConversion(gallon, litre);
             Assert.IsTrue(compare);
         }
 
         /// <summary>
-        /// Test case 5.2: Given 1 litre and 1000ml when compared should return true
+        /// Test case 5.2: Given 1 liter and 1000ml when compared should return true
         /// </summary>
         [Test]
         public void Given_1LitreAnd1000Ml_WhenCompared_ShouldReturnTrue()
         {
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 1.0);
             QuantitiyMeasurement milliliter = new QuantitiyMeasurement(Unit.MiLLILITERS, 1000.0);
-            bool compare = measurement.UnitConversion(litre, milliliter);
+            bool compare = this.measurement.UnitConversion(litre, milliliter);
             Assert.IsTrue(compare);
         }
 
-
         /// <summary>
-        /// Test case 5.3: Given 1 litre and 1 ml when compared should return false
+        /// Test case 5.3: Given 1 liter and 1 milliliter when compared should return false
         /// </summary>
         [Test]
         public void Given_1LitreAnd1Milliliter_WhenCompared_ShouldReturnFalse()
         {
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 1);
             QuantitiyMeasurement milliLiter = new QuantitiyMeasurement(Unit.MiLLILITERS, 1);
-            bool compare = measurement.UnitConversion(litre, milliLiter);
+            bool compare = this.measurement.UnitConversion(litre, milliLiter);
             Assert.IsFalse(compare);
         }
 
         /// <summary>
-        /// Test case 5.4: Given 1 gallon and 1 litre when compared should return false
+        /// Test case 5.4: Given 1 gallon and 1 liter when compared should return false
         /// </summary>
         [Test]
         public void Given_1GallonAnd1Litre_WhenCompared_ShouldReturnFalse()
         {
             QuantitiyMeasurement gallon = new QuantitiyMeasurement(Unit.GALLON, 1);
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 1);
-            bool compare = measurement.UnitConversion(gallon, litre);
+            bool compare = this.measurement.UnitConversion(gallon, litre);
             Assert.IsFalse(compare);
         }
 
         /// <summary>
-        /// Test case 6.1 :Given 1 Gallon and 3.78 litres should return 7.56 Litres
+        /// Test case Negative: Given Negative liter and 1000ml when compared should return true
+        /// </summary>
+        [Test]
+        public void Given_Negative1LitreAnd1000Ml_WhenCompared_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, -1.0);
+            QuantitiyMeasurement milliliter = new QuantitiyMeasurement(Unit.MiLLILITERS, 1000.0);
+            bool compare = this.measurement.UnitConversion(litre, milliliter);
+            Assert.IsFalse(compare);
+        }
+
+        /// <summary>
+        /// Test case 6.1 :Given 1 Gallon and 3.78 liters should return 7.56 Liters
         /// </summary>
         [Test]
         public void Given_1GallonAnd3point78Litres_WhenAdded_ShouldReturn7point56Inch()
         {
             QuantitiyMeasurement gallon = new QuantitiyMeasurement(Unit.GALLON, 1.0);
             QuantitiyMeasurement litre = new QuantitiyMeasurement(Unit.LITRE, 3.78);
-            double addition = measurement.Addition(gallon, litre);
+            double addition = this.measurement.Addition(gallon, litre);
             Assert.AreEqual(8.0, addition);
         }
 
         /// <summary>
-        /// Test case 6.2 :Given 1 litre and 3.78 milliliter should return 2 Litres
+        /// Test case 6.2 :Given 1 liter and 3.78 milliliter should return 2 Liters
         /// </summary>
         [Test]
         public void Given_1LitreAnd1000Ml_WhenAdded_ShouldReturn2Litres()
         {
             QuantitiyMeasurement litre = new QuantitiyMeasurement(QuantitiyMeasurement.Unit.LITRE, 1.0);
             QuantitiyMeasurement milliliter = new QuantitiyMeasurement(QuantitiyMeasurement.Unit.MiLLILITERS, 1000.0);
-            double addition = measurement.Addition(litre, milliliter);
+            double addition = this.measurement.Addition(litre, milliliter);
             Assert.AreEqual(2.0, addition);
         }
 
@@ -408,32 +466,92 @@ namespace QuantityMeasurement.BridgeLabz
         {
             QuantitiyMeasurement killogram = new QuantitiyMeasurement(Unit.KILLOGRAM, 1.0);
             QuantitiyMeasurement gram = new QuantitiyMeasurement(Unit.GRAM, 1000.0);
-            bool compare = measurement.UnitConversion(killogram, gram);
+            bool compare = this.measurement.UnitConversion(killogram, gram);
             Assert.IsTrue(compare);
         }
 
         /// <summary>
-        /// Test case 7.2 :Given 1 Ton and 1000 Kgs when compared should return True
+        /// Test case 7.2 :Given 1 Ton and 1000 Kilogram when compared should return True
         /// </summary>
         [Test]
         public void Given1TonAnd1000Kgs_WhenCompared_ShouldReturnTrue()
         {
             QuantitiyMeasurement tonne = new QuantitiyMeasurement(Unit.TON, 1.0);
             QuantitiyMeasurement killogram = new QuantitiyMeasurement(Unit.KILLOGRAM, 1000.0);
-            bool compare = measurement.UnitConversion(tonne, killogram);
+            bool compare = this.measurement.UnitConversion(tonne, killogram);
             Assert.IsTrue(compare);
         }
 
         /// <summary>
-        /// Test case 7.3 :Addition of 1 Ton and 1000 Grams which should return 1001 Kgs
+        /// Test case 7.3 :Addition of 1 Ton and 1000 Gram should return 1001 kilogram
         /// </summary>
         [Test]
         public void Given_1TonAnd1000Grams_WhenAdded_ShouldReturn1001Kgs()
         {
             QuantitiyMeasurement tonne = new QuantitiyMeasurement(Unit.TON, 1.0);
             QuantitiyMeasurement gram = new QuantitiyMeasurement(Unit.GRAM, 1000.0);
-            double addition = measurement.Addition(tonne, gram);
+            double addition = this.measurement.Addition(tonne, gram);
             Assert.AreEqual(1001.0, addition);
+        }
+
+        /// <summary>
+        /// Test case Negative :Given Negative 1 Kg and 1000 grams when compared should return True
+        /// </summary>
+        [Test]
+        public void Given_Negative1KgAnd1000Grams_WhenCompared_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement killogram = new QuantitiyMeasurement(Unit.KILLOGRAM, -1.0);
+            QuantitiyMeasurement gram = new QuantitiyMeasurement(Unit.GRAM, 1000.0);
+            bool compare = this.measurement.UnitConversion(killogram, gram);
+            Assert.IsFalse(compare);
+        }
+
+        /// <summary>
+        /// Test case 8.1 :Given 100 Celsius and 212 Fahrenheit should return True
+        /// </summary>
+            [Test]
+        public void Give_100CelsiusAnd212Fahrenheit_WhenCompared_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement celsius = new QuantitiyMeasurement(Unit.CELSIUS, 100.0);
+            QuantitiyMeasurement fahrenheit = new QuantitiyMeasurement(Unit.FAHRENHEIT, 212.0);
+            bool compare = this.measurement.ConvertTemperature(celsius, fahrenheit);
+            Assert.IsTrue(compare);
+        }
+
+        /// <summary>
+        /// Test case 8.2 :Given 100 Fahrenheit and 100 Celsius should return False
+        /// </summary>
+        [Test]
+        public void Given_100Fahrenheitand100Celsius_WhenCompared_ShouldReturnFalse()
+        {
+            QuantitiyMeasurement fahrenheit = new QuantitiyMeasurement(Unit.FAHRENHEIT, 100.0);
+            QuantitiyMeasurement celsius = new QuantitiyMeasurement(Unit.CELSIUS, 100.0);
+            bool compareCheck = this.measurement.ConvertTemperature(fahrenheit, celsius);
+            Assert.IsFalse(compareCheck);
+        }
+
+        /// <summary>
+        /// Test case 8.3 :Given 212 Fahrenheit and 100 Celsius should return True
+        /// </summary>
+        [Test]
+        public void Given_212Fahrenheitand100Celsius_WhenCompared_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement fahrenheit = new QuantitiyMeasurement(Unit.FAHRENHEIT, 212.0);
+            QuantitiyMeasurement celsius = new QuantitiyMeasurement(Unit.CELSIUS, 100.0);
+            bool compareCheck = this.measurement.ConvertTemperature(fahrenheit, celsius);
+            Assert.IsTrue(compareCheck);
+        }
+
+        /// <summary>
+        /// Test case Negative :Given Negative Fahrenheit and 100 Celsius should return True
+        /// </summary>
+        [Test]
+        public void Given_Negative212Fahrenheitand100Celsius_WhenCompared_ShouldReturnTrue()
+        {
+            QuantitiyMeasurement fahrenheit = new QuantitiyMeasurement(Unit.FAHRENHEIT, -212.0);
+            QuantitiyMeasurement celsius = new QuantitiyMeasurement(Unit.CELSIUS, 100.0);
+            bool compareCheck = this.measurement.ConvertTemperature(fahrenheit, celsius);
+            Assert.IsFalse(compareCheck);
         }
     }
 }

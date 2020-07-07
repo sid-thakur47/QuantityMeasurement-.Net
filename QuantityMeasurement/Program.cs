@@ -1,10 +1,22 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Program.cs" company="BridgeLabz">
+// Copyright (c) 2020 All Rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace QuantityMeasurement
 {
-    class Program
+ using System;
+
+    /// <summary>
+    /// Main class
+    /// </summary>
+   public class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// main method
+        /// </summary>
+       public static void Main()
         {
             Console.WriteLine("Hello World!");
         }
